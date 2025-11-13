@@ -4,4 +4,4 @@ Primeiro, você precisa ser estudante da Universidade, isso é óbvio. Segundo, 
 
 Por sinal, as rotas são "públicas" pelo próprio navegador e nada aqui tem o intuito de prejudicar a Universidade, afinal, até mesmo eu, como estudante deles, adquiri bastante conhecimento com essa brincadeira. 
 
-Uma forma de solução para eles que fazerem a verificação do tempo no lado do backend ao invés do frontend. Dessa forma, esse programa perde sua utilidade. Até lá, espero que usufruam dessa ferramenta.
+Uma forma de solução para eles fazerem é a verificação do tempo no lado do backend ao invés do frontend. Dessa forma, este programa perde sua utilidade. Até lá, espero que usufruam dessa ferramenta.
