@@ -143,7 +143,7 @@ pub struct Discipline {
     pub objetos: Vec<Objeto>,
     #[serde(rename = "dataAtualizacao")]
     pub data_atualizacao: String,
-    pub versionamento: Versionamento,
+    pub versionamento: Option<Versionamento>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

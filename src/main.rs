@@ -81,13 +81,16 @@ async fn run() -> color_eyre::Result<()> {
             sp.start("Capturando conteúdos...");
             for matricula in data.matriculas {
                 let matricula_id = &matricula.matricula;
+                // log::info(format!("Matrícula: {:?}", matricula))?;
                 for turma in matricula.turmas {
                     if let std::result::Result::Ok(course) =
                         client.get_course(&turma, matricula_id).await
                     {
                         let course_id = &course.id;
+                        log::info(format!("Curso: {}", course_id))?;
                         for tema in course.disciplina.temas {
                             let theme_id = &tema.id;
+                            log::info(format!("Tema: {}", theme_id))?;
                             if let std::result::Result::Ok(objetivo) =
                                 client.get_theme(&turma, theme_id, matricula_id).await
                             {
