@@ -1,5 +1,12 @@
 use serde::{Deserialize, Serialize};
 
+pub struct Data {
+    pub matricula_id: String,
+    pub content_id: String,
+    pub theme_id: String,
+    pub course_id: String
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct User {
     pub id: String,

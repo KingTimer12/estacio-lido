@@ -56,11 +56,7 @@ impl ApiClient {
         self.token = Some(token.to_string());
         Ok(())
     }
-
-    pub fn get_token(&self) -> Option<String> {
-        self.token.clone()
-    }
-
+    
     pub async fn get<T: serde::de::DeserializeOwned + std::fmt::Debug>(
         &self,
         url: &str,
@@ -86,42 +82,12 @@ impl ApiClient {
         .into())
     }
 
-    pub async fn post<T: serde::de::DeserializeOwned + std::fmt::Debug>(
-        &self,
-        url: &str,
-        data: serde_json::Value,
-    ) -> Result<T, Box<dyn Error>> {
-        let url = self.base_url.join(url)?;
-        let response = self.client.post(url).json(&data).send().await?;
-
-        if response.status().is_success() {
-            let body = response.json().await?;
-            return Ok(body);
-        }
-
-        let status = response.status();
-        let error_body = response
-            .text()
-            .await
-            .unwrap_or_else(|_| "Unable to read response body".to_string());
-        eprintln!("Response body: {}", error_body);
-        Err(format!(
-            "Request failed with status: {} - Body: {}",
-            status, error_body
-        )
-        .into())
-    }
-
-    pub async fn post_without_body<T: serde::de::DeserializeOwned + std::fmt::Debug>(
-        &self,
-        url: &str,
-    ) -> Result<T, Box<dyn Error>> {
+    pub async fn post_without_body(&self, url: &str) -> Result<(), Box<dyn Error>> {
         let url = self.base_url.join(url)?;
         let response = self.client.post(url).send().await?;
 
         if response.status().is_success() {
-            let body = response.json().await?;
-            return Ok(body);
+            return Ok(());
         }
 
         let status = response.status();
